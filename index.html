@@ -7,10 +7,11 @@
 </head>
   <body>
     <h1>Test chat page</h1>
-      <script>
+    <div id="messenger"></div>  
+    <script>
        (function(d,t) {
             var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-            g.src="https://test.ca.dfd.sbx.gcp.trchq.com/not-working"
+            g.src="https://test.ca.one-stop-talk.sbx.gcp.trchq.com/embed.js"
             s.parentNode.insertBefore(g,s);
             g.onload=function(){
               window.virtualCareMessenger = new window.VirtualCareMessengerEncrypted({
@@ -18,7 +19,8 @@
             ws:  'wss://test.ca.one-stop-talk.sbx.gcp.trchq.com/cable',
             app_id: "XnA6d2mEejaov78UETAzM5uj",
                 lang: "en",
-                mode: 'fullscreen'
+                mode: "fullscreen",
+                wrapperId: "messenger"
               });
             }
             g.onerror = () => {
