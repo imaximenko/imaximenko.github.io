@@ -8,20 +8,23 @@
   <body>
     <h1>Test chat page</h1>
       <script>
-        (function(d,t) {
-          var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-          g.src="https://api.ca.dfd.thinkresearch.com/embed.js"
-          s.parentNode.insertBefore(g,s);
-          g.onload=function(){
-            new window.VirtualCareMessengerEncrypted({
-              domain: 'https://api.ca.dfd.thinkresearch.com',
-              ws:  'wss://api.ca.dfd.thinkresearch.com/cable',
-              app_id: "cGLP7wDvScTacMo9HNjDFKug",
-              mode: "fullscreen",
-              lang: "en" 
-            })
-          }
-        })(document,"script");
+       (function(d,t) {
+            var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+            g.src="https://test.ca.one-stop-talk.sbx.gcp.trchq.com/embed.js"
+            s.parentNode.insertBefore(g,s);
+            g.onload=function(){
+              window.virtualCareMessenger = new window.VirtualCareMessengerEncrypted({
+            domain: 'https://test.ca.one-stop-talk.sbx.gcp.trchq.com',
+            ws:  'wss://test.ca.one-stop-talk.sbx.gcp.trchq.com/cable',
+            app_id: "XnA6d2mEejaov78UETAzM5uj",
+                lang: "en",
+                mode: 'fullscreen'
+              });
+            }
+            g.onerror = () => {
+              alert('Failed to load messenger')
+            }
+          })(document,"script");
       </script>
   </body>
 </html>
