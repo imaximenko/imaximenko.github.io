@@ -28,26 +28,35 @@
             }
           })(document,"script");
       </script>
-      <script>
-        (() => {
-        const limit = 1000 * 5; // 5 seconds
-        const start = Date.now();
-        let elapsed = 0;
-        function check() {
-          elapsed = Date.now() - start;
-          if (elapsed > limit) {
-            alert('did not load');
-            return;
-          }
-            setTimeout(() => {
-                if (document.querySelector('#messenger > div > iframe')) {
-                  alert('loaded');
-                } else {
-                  check();
+      <script id="messenger-error-handler">
+        (function () {
+          function check(limit) {
+            const start = Date.now();
+            let elapsed = 0;
+
+            const runCheck = function (resolve, reject) {
+              elapsed = Date.now() - start;
+              if (elapsed > limit) {
+                return reject('Timedout');
+              }
+
+              setTimeout(function () {
+                if (!document.querySelector('#messenger > div > iframe')) {
+                  return runCheck(resolve, reject);
                 }
-            }, 500);
+
+                resolve('Loaded');
+              }, 100);
+            };
+
+            return new Promise(runCheck);
           }
-          check();   
+
+          check(1000 * 5).then(() => {
+            alert('loaded');
+          }).catch(() => {
+            alert('failed');
+          });
         })();
     </script>
   </body>
