@@ -28,5 +28,27 @@
             }
           })(document,"script");
       </script>
+      <script>
+        (() => {
+        const limit = 1000 * 5; // 5 seconds
+        const start = Date.now();
+        let elapsed = 0;
+        function check() {
+          elapsed = Date.now() - start;
+          if (elapsed > limit) {
+            alert('did not load');
+            return;
+          }
+            setTimeout(() => {
+                if (document.querySelector('#messenger > div > iframe')) {
+                  alert('loaded');
+                } else {
+                  check();
+                }
+            }, 500);
+          }
+          check();   
+        })();
+    </script>
   </body>
 </html>
