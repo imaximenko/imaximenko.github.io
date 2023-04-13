@@ -19,41 +19,11 @@
             new window.VirtualCareMessengerEncrypted({
               domain: 'https://test.ca.digital-front-door.stg.gcp.trchq.com',
               ws:  'wss://test.ca.digital-front-door.stg.gcp.trchq.com/cable',
-              app_id: "foyUwJtNHgQoE7ee1PewgY3d",
-                lang: "en",
-                wrapperId: "messenger"
+              app_id: "D2p3uNwqDtu7pknnG5WAZB6Q",
+              lang: "en" 
             })
           }
-        })(document,"script");    
-      <script id="messenger-error-handler">
-        (function () {
-          function check(limit) {
-            const start = Date.now();
-            let elapsed = 0;
-
-            const runCheck = function (resolve, reject) {
-              elapsed = Date.now() - start;
-              if (elapsed > limit) {
-                return reject('Timedout');
-              }
-
-              setTimeout(function () {
-                if (!document.querySelector('#messenger > div > iframe')) {
-                  return runCheck(resolve, reject);
-                }
-
-                resolve('Loaded');
-              }, 100);
-            };
-
-            return new Promise(runCheck);
-          }
-
-          check(1000 * 5).then(() => {
-          }).catch(() => {
-            alert('failed');
-          });
-        })();
-    </script>
+        })(document,"script");
+      </script>
   </body>
 </html>
