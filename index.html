@@ -9,21 +9,72 @@
 </head>
   <body>
     <h1>Test chat page</h1>
-    <div id="messenger"></div>  
-      <script>
-        (function(d,t) {
-          var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-          g.src="https://test.ca.digital-front-door.dev.gcp.trchq.com/embed.js"
-          s.parentNode.insertBefore(g,s);
-          g.onload=function(){
-            new window.VirtualCareMessengerEncrypted({
-              domain: 'https://test.ca.digital-front-door.dev.gcp.trchq.com',
-              ws:  'wss://test.ca.digital-front-door.dev.gcp.trchq.com/cable',
-              app_id: "NKubX8qcG34kVPYPNEabB5A5",
-              lang: "en" 
-            })
-          }
-        })(document,"script");
-      </script>
+<style>
+  .my-messenger {
+    position: unset;
+    height: 704px;
+  }
+  .my-container {
+    position: unset;
+    width: unset;
+  }
+  #toggle-button {
+    margin-top: 20px;
+    padding: 10px;
+    background: red;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    border: 1px solid;
+  }
+  #messenger-container {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+  }
+</style>
+<div id="messenger-container">
+  <div id="my-messenger"></div>
+  <button id="toggle-button">Open</button>
+</div>
+
+// Define the parameters as variables
+var documentElement = document;
+var scriptTag = "script";
+var scriptSrc = "https://test.ca.digital-front-door.dev.gcp.trchq.com/embed.js";
+var domain = "https://test.ca.digital-front-door.dev.gcp.trchq.com";
+var wsUrl = 'wss://test.ca.digital-front-door.dev.gcp.trchq.com';
+var language = "en";
+var appId = "NKubX8qcG34kVPYPNEabB5A5";
+var mode = 'fullscreen';
+
+// Set the variables in the document (e.g., using data attributes or a custom script tag)
+documentElement.documentElement.setAttribute('data-script-src', scriptSrc);
+documentElement.documentElement.setAttribute('data-domain', domain);
+documentElement.documentElement.setAttribute('data-ws-url', wsUrl);
+documentElement.documentElement.setAttribute('data-language', language);
+documentElement.documentElement.setAttribute('data-app-id', appId);
+documentElement.documentElement.setAttribute('data-mode', mode);
+
+(function(d,t,src,dom,ws,lang,app,mod) {
+  var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+  g.src=src;
+  s.parentNode.insertBefore(g,s);
+  g.onload=function(){
+    window.virtualCareMessenger = new window.VirtualCareMessengerEncrypted({
+      domain: dom,
+      ws:  ws,
+      lang: lang,
+      app_id: app,
+      mode: mod
+    });
+
+    document.getElementById("toggle-button").addEventListener("click", function(e) {
+      virtualCareMessenger.toggleMessenger();
+      e.srcElement.innerText = virtualCareMessenger.isOpen ? "Close" : "Open";
+    });
+  }
+})(documentElement, scriptTag, scriptSrc, domain, wsUrl, language, appId, mode);
+
   </body>
 </html>
