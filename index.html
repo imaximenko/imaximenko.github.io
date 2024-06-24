@@ -40,7 +40,6 @@
 <script>
 // Define the parameters as variables
 var documentElement = document;
-var scriptTag = "script";
 var scriptSrc = "https://test.ca.digital-front-door.dev.gcp.trchq.com/embed.js";
 var domain = "https://test.ca.digital-front-door.dev.gcp.trchq.com";
 var wsUrl = 'wss://test.ca.digital-front-door.dev.gcp.trchq.com';
@@ -74,7 +73,7 @@ documentElement.documentElement.setAttribute('data-mode', mode);
       e.srcElement.innerText = virtualCareMessenger.isOpen ? "Close" : "Open";
     });
   }
-})(documentElement, scriptTag, scriptSrc, domain, wsUrl, language, appId, mode);
+})(documentElement, scriptSrc, domain, wsUrl, language, appId, mode);
 </script>
   </body>
 </html>
