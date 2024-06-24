@@ -12,7 +12,6 @@
 <style>
   .my-messenger {
     position: unset;
-    height: 704px;
   }
   .my-container {
     position: unset;
@@ -38,23 +37,14 @@
   <button id="toggle-button">Open</button>
 </div>
 <script>
+  
 // Define the parameters as variables
-var documentElement = document;
-var scriptTag = "script";
 var scriptSrc = "https://test.ca.digital-front-door.dev.gcp.trchq.com/embed.js";
 var domain = "https://test.ca.digital-front-door.dev.gcp.trchq.com";
 var wsUrl = 'wss://test.ca.digital-front-door.dev.gcp.trchq.com/cable';
 var language = "en";
 var appId = "NKubX8qcG34kVPYPNEabB5A5";
 var mode = 'default';
-
-// Set the variables in the document (e.g., using data attributes or a custom script tag)
-documentElement.documentElement.setAttribute('data-script-src', scriptSrc);
-documentElement.documentElement.setAttribute('data-domain', domain);
-documentElement.documentElement.setAttribute('data-ws-url', wsUrl);
-documentElement.documentElement.setAttribute('data-language', language);
-documentElement.documentElement.setAttribute('data-app-id', appId);
-documentElement.documentElement.setAttribute('data-mode', mode);
 
 (function(d,t,src,dom,ws,lang,app,mod) {
   var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
@@ -64,7 +54,7 @@ documentElement.documentElement.setAttribute('data-mode', mode);
     window.virtualCareMessenger = new window.VirtualCareMessengerEncrypted({
       domain: dom,
       ws:  ws,
-      lang: lang,
+      lang: language,
       app_id: app,
       mode: mod,
       wrapperId: "my-messenger",
@@ -78,7 +68,7 @@ documentElement.documentElement.setAttribute('data-mode', mode);
       e.srcElement.innerText = virtualCareMessenger.isOpen ? "Close" : "Open";
     });
   }
-})(documentElement, scriptTag, scriptSrc, domain, wsUrl, language, appId, mode);
+})(document, "script", scriptSrc, domain, wsUrl, language, appId, mode);
 </script>
-  </body>
+</body>
 </html>
