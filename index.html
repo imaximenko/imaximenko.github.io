@@ -64,7 +64,7 @@
             s.parentNode.insertBefore(g, s);
             g.onload = function () {
                 window.virtualCareMessenger = new window.VirtualCareMessengerEncrypted({
-                    domain: host,
+                    domain: "https://" + host,
                     ws: "wss://" + host + "/embed.js",
                     data: data,
                     lang: document.documentElement.lang,
