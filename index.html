@@ -49,14 +49,18 @@
         btn.addEventListener('click', function () {
             var host = document.getElementById("host").value;
             var app_key = document.getElementById("app_key").value;
+            var email = document.getElementById("email").value;
             var identifier_key = document.getElementById("identifier_key").value;
             var first_name = document.getElementById("first_name").value;
             var last_name = document.getElementById("last_name").value;
 
             var data = {
+                email: email,
                 identifier_key: identifier_key,
-                first_name: first_name,
-                last_name: last_name
+                properties: {
+                    first_name: first_name,
+                    last_name: last_name
+                },
             };
 
             var g = document.createElement('script'), s = document.getElementsByTagName('script')[0];
@@ -64,7 +68,7 @@
             s.parentNode.insertBefore(g, s);
             g.onload = function () {
                 window.virtualCareMessenger = new window.VirtualCareMessengerEncrypted({
-                    domain: "https://" + host,
+                    domain: "http://" + host,
                     ws: "wss://" + host + "/embed.js",
                     data: data,
                     lang: document.documentElement.lang,
