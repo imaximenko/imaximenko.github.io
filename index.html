@@ -37,7 +37,7 @@
         </div>
 
 
-        <button type="submit" id="start" class="btn btn-primary">Submit</button>
+        <button type="submit" id="start" class="btn btn-primary">Start</button>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
@@ -68,8 +68,8 @@
             s.parentNode.insertBefore(g, s);
             g.onload = function () {
                 window.virtualCareMessenger = new window.VirtualCareMessengerEncrypted({
-                    domain: "http://" + host,
-                    ws: "wss://" + host + "/embed.js",
+                    domain: "https://" + host,
+                    ws: "wss://" + host + "/cable",
                     data: data,
                     lang: document.documentElement.lang,
                     app_id: app_key,
