@@ -45,6 +45,12 @@
             <input type="text" class="form-control" id="last_name">
         </div>
 
+        <div class="mb-3">
+            <label for="mode" class="form-label">Mode</label>
+            <input type="text" class="form-control" id="mode", value="default">
+        </div>
+
+     <div id="parent_container">(Messenger will be put in here)</div>
 
         <button type="submit" id="start" class="btn btn-primary">Start</button>
     </div>
@@ -63,6 +69,7 @@
             var first_name = document.getElementById("first_name").value;
             var last_name = document.getElementById("last_name").value;
             var language = document.getElementById("language").value;
+            var mode = document.getElementById("mode").value;
 
             var data = {
                 email: email,
@@ -83,7 +90,8 @@
                     data: data,
                     lang: language,
                     app_id: app_key,
-                    mode: "default",
+                    mode: mode,
+                    wrapperId: 'parent_container'
                 })
             };
         });
